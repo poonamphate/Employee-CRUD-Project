@@ -1,0 +1,236 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Employee Management System</title>
+      <link rel="stylesheet" href="styles.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="Scripts/jquery-1.9.1.min.js"></script>
+
+      <script>
+      function updateEmployee(rowId) {
+    	  var row = document.getElementById(rowId);
+    	  var node = row.firstChild;
+    	  
+    	  alert("Updating employee id=" + node.childNodes[0].nodeValue);
+    	  
+    	  location.reload();
+      }
+      function deleteEmployee(rowId) {
+    	  var row = document.getElementById(rowId);
+    	  var node = row.firstChild;
+    	  
+    		  alert("Deleting employee id=" + node.childNodes[0].nodeValue);
+    	  
+    	  var employeeId =  node.childNodes[0].nodeValue;
+    	  alert("please wait...");
+              $.ajax({
+                  url: "rest/employees/" + employeeId,
+                  type: "DELETE",
+                  accepts: {json: "text/json"},
+                  dataType: "json",
+                  success: function (rc) {
+  						location.reload(true);
+  				  
+                  },
+                  error: function (request, message, error) {
+                    handleException(request, message, error);
+                  }
+                });
+      }
+          function employeeList() {
+			  var employeesNode = document.getElementById("employees");
+			  while (employeesNode.firstChild) {
+			  	employeesNode.removeChild(employeesNode.firstChild);
+			  }
+              $.ajax({
+                url: "rest/employees",
+                type: "GET",
+                accepts: {json: "text/json"},
+                dataType: "json",
+                success: function (employees) {
+                  //alert("Inside employeeList");
+                  
+                  if (employees == null || typeof(employees.employee) == "undefined")
+                	  return;
+                  var nEmployees;
+                  var employeeList;
+                  if (typeof(employees.employee.length) == "undefined") {
+						nEmployees = 1;
+						employeeList = new Array();
+						employeeList.push(employees.employee);
+                  }
+                  else {
+                	  nEmployees = employees.employee.length;
+                	  employeeList = employees.employee;
+                  }
+
+                  var employeesNode = document.getElementById("employees");
+                  var trNode, tdNode, textNode, inputNode, btnNode;
+                  // create header
+				  trNode = document.createElement("tr");
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("Employee Id");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("First Name");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("Last Name");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("Email");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("Phone");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("Skillset");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("Update?");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+
+				  tdNode = document.createElement("th");
+				  textNode = document.createTextNode("Delete?");
+				  tdNode.appendChild(textNode);
+				  trNode.appendChild(tdNode);
+			
+				  employeesNode.appendChild(trNode);
+                  for (i = 0; i < nEmployees; ++i) {
+                	//alert(i);
+	                trNode = document.createElement("tr");
+	                trNode.setAttribute("id", "row_" + i);
+                  	var employee = employeeList[i];
+
+                  	tdNode = document.createElement("td");
+                  	textNode = document.createTextNode(employee.id);
+                  	tdNode.appendChild(textNode);
+                  	trNode.appendChild(tdNode);
+
+                  	tdNode = document.createElement("td");
+                  	inputNode = document.createElement("input");
+                  	inputNode.setAttribute("value", employee.first_name);
+                  	tdNode.appendChild(inputNode);
+                  	trNode.appendChild(tdNode);
+
+                  	tdNode = document.createElement("td");
+                  	//textNode = document.createTextNode(employee.last_name);
+                  	inputNode = document.createElement("input");
+                  	inputNode.setAttribute("value", employee.last_name);
+                  	tdNode.appendChild(inputNode);
+                  	trNode.appendChild(tdNode);
+
+                  	tdNode = document.createElement("td");
+                  	inputNode = document.createElement("input");
+                  	inputNode.setAttribute("value", employee.email);
+                  	tdNode.appendChild(inputNode);
+                  	trNode.appendChild(tdNode);
+
+                  	tdNode = document.createElement("td");
+                  	inputNode = document.createElement("input");
+                  	inputNode.setAttribute("value", employee.phone);
+                  	tdNode.appendChild(inputNode);
+                  	trNode.appendChild(tdNode);
+
+                  	tdNode = document.createElement("td");
+                  	inputNode = document.createElement("input");
+                  	inputNode.setAttribute("value", employee.skill_set.join());
+                  	tdNode.appendChild(inputNode);
+                  	trNode.appendChild(tdNode);
+
+                  	tdNode = document.createElement("td");
+                  	btnNode = document.createElement("button");
+                  	btnNode.setAttribute("rowId", "row_" + i);
+                  	textNode = document.createTextNode("Update");
+                  	btnNode.appendChild(textNode);
+                  	btnNode.onclick = function() {/*alert("Updating... " + this.getAttribute("rowId"));*/ updateEmployee(this.getAttribute("rowId"));};
+                  	tdNode.appendChild(btnNode);
+                  	trNode.appendChild(tdNode);
+
+                  	tdNode = document.createElement("td");
+                  	btnNode = document.createElement("button");
+                  	btnNode.setAttribute("rowId", "row_" + i);
+                  	textNode = document.createTextNode("Delete");
+                  	btnNode.appendChild(textNode);
+                  	btnNode.onclick = function() {/*alert("Deleting... " + this.getAttribute("rowId"));*/ deleteEmployee(this.getAttribute("rowId"));};
+                  	tdNode.appendChild(btnNode);
+                  	trNode.appendChild(tdNode);
+                  	
+                  	employeesNode.appendChild(trNode);
+                  }
+                },
+                error: function (request, message, error) {
+                  handleException(request, message, error);
+                }
+              });
+          }
+      </script>
+  </head>
+
+  <body onload="javascript:employeeList();">
+      <table id="empTable">
+      	<tr>
+      	       <td>
+                  <table class="list" id="employeeList">
+                      <div>
+                          <h2>Display Employee List</h2>
+                      </div>
+                      <div id="employees"></div>
+                      
+                 </table>
+              </td>
+      	</tr>
+          <tr>
+              <td>
+                  <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>
+                      <h2>Add new Employee</h2>
+                    </div>  
+                    <div>
+                      <label>Employee Id*</label><label class="validation-error hide" id="empIdValidationError">This field is required.</label>
+                      <input type="number" name="empId" id="empId">
+                    </div>  
+                    <div>
+                      <label>First Name*</label><label class="validation-error hide" id="firstNameValidationError">This field is required.</label>
+                      <input type="text" name="firstName" id="firstName">
+                    </div>
+                    <div>
+                      <label>Last name*</label><label class="validation-error hide" id="lastNameValidationError">This field is required.</label>
+                      <input type="text" name="lastName" id="lastName">
+                    </div>
+                    <div>
+                      <label>Phone number*</label><label class="validation-error hide" id="phoneValidationError">This field is required.</label>
+                      <input type="number" name="email" id="email">
+                    </div>
+                    <div>
+                      <label>Skill set</label>
+                      <input type="text" name="skillSet" id="skillSet">
+                    </div>
+                    <div>
+                      <label>Email Id*</label><label class="validation-error hide" id="emailValidationError">This field is required.</label>
+                      <input type="email" name="emailId" id="emailzid">
+                    </div>
+                    <div  class="form-action-buttons">
+                      <center><input type="submit" value="Submit"></center>
+                    </div>  
+                  </form>
+              </td>
+          </tr>
+      </table>
+      <script src="script.js"></script>
+  </body>
+  </html>
