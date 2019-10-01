@@ -66,9 +66,32 @@ To run this application, please follow following instructions.
 
 ![UI_EmpMgmtSystem_AfterUpdatingEmp2.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/UI_EmpMgmtSystem_AfterUpdatingEmp2.png)
 
-Testing web API through Postman
+# Testing web API through Postman
 Please follow below screenshot for testing this application through Postman tool.
 
+## GET request Json
+
+![Postman_GetRequest_Json.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/Postman_GetRequest_Json.png)
+
+## GET request Xml
+
+![Postman_GetRequest_Xml.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/Postman_GetRequest_Xml.png)
+
+## GET by id request 
+
+![Postman_GetById.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/Postman_GetById.png)
+
+## PUT request
+
+![Postman_PutRequest.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/Postman_PutRequest.png)
+
+## Post request
+
+![Postman_PostRequest.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/Postman_PostRequest.png)
+
+## Delete request
+
+![Postman_DeleteRequest.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/Postman_DeleteRequest.png)
 
 
 
