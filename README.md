@@ -28,10 +28,12 @@ Front end: As shown in the figure, our web client is an UI application (index.ht
 Back end: Upon receiving a http request from web client, web server invokes REST web services which consist of web APIs for handling GET, PUT, POST and DELETE http request.
 
 How to run the application
+
 To run this application, please follow following instructions.
 
 1.	Download the project repository (RESTfulCRUD_Employee) from git
-2.	In the eclipse: File  Import  Existing Maven Project  select downloaded repository
+2.	In the eclipse: File  Import  Existing Maven Project  select downloaded repository. Project Directory structure would look like below 
+![DirectoryStructure.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/DirectoryStructure.png)
 3.	Copy h2 jar to H2 console
 4.	Go to http://localhost:8082 and connect to H2 database inserting JDBC URL as jdbc:h2:tcp://localhost:9092/~/mc  click connect
 5.	This should display running h2 instance
