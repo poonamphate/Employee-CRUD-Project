@@ -64,7 +64,7 @@ To run this application, please follow following instructions.
 
 ![UI_EmpMgmtSystem_AfterUpdatingEmp2.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/UI_EmpMgmtSystem_AfterUpdatingEmp2.png)
 
-# 2. Testing web API through Postman
+# 1.5 Testing web API through Postman
 Please follow below screenshot for testing this application through Postman tool.
 
 ## GET request Json
