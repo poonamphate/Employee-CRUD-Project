@@ -1,5 +1,4 @@
-# Employee-CRUD-Project
-Employee management system using Java REST API and HTML,CSS, JQuery
+# "Employee-CRUD-Project"
 
 Goal of this project is to implement Employee Management System to achieve following functionality.
 
