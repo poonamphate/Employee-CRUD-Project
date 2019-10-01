@@ -17,8 +17,8 @@ e.	Delete employee by id
 I am using following technologies to implement this application.
 1.	Frontend:  HTML, CSS, JavaScript, JQuery
 2.	Backend: Java with REST Api, Maven
-3.	Database: H2 in-memory database
-4.	Testing: Postman, web browser 
+3.	Database: H2 database (version 1.4.194)
+4.	Tools used: Maven, Eclipse(Version: Neon.3 Release (4.6.3)), Postman(https://www.getpostman.com/downloads/), visual studio, web browser 
 
 ## 1.3 Hight level architecture
 Front end: As shown in the figure, our web client is an UI application (index.html) that will display list of Employee records, as well as provide an interface to update, delete or add an Employee to the database.
@@ -37,7 +37,7 @@ To run this application, please follow following instructions.
 
 ![DirectoryStructure.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/DirectoryStructure.png)
 
-3.	Copy h2 jar to H2 console as shown below 
+3.	H2 process needs to be started before running the code since H2 is used as file based database. To start running H2,  copy h2 jar to H2 console as shown below 
 
 ![H2Console.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/H2Console.png)
 
