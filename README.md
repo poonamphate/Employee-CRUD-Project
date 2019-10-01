@@ -53,7 +53,16 @@ To run this application, please follow following instructions.
 ![UI_EmpMgmtSystem.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/UI_EmpMgmtSystem.png)
 
 9.	Deleting an employee should display following screen.
+
+![UI_EmpMgmtSystem_DeletingEmployee1.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/UI_EmpMgmtSystem_DeletingEmployee1.png)
+
+![UI_EmpMgmtSystem_afterDeletingEmp1.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/UI_EmpMgmtSystem_afterDeletingEmp1.png)
+
 10.	Updating an employee would display following screen.
+
+![UI_EmpMgmtSystem_UpdatingEmployee2.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/UI_EmpMgmtSystem_UpdatingEmployee2.png)
+
+![UI_EmpMgmtSystem_AfterUpdatingEmp2.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/UI_EmpMgmtSystem_AfterUpdatingEmp2.png)
 
 Testing web API through Postman
 Please follow below screenshot for testing this application through Postman tool.
