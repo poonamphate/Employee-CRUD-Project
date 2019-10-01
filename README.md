@@ -32,11 +32,14 @@ How to run the application
 To run this application, please follow following instructions.
 
 1.	Download the project repository (RESTfulCRUD_Employee) from git
-2.	In the eclipse: File  Import  Existing Maven Project  select downloaded repository. Project Directory structure would look like below 
+2.	In the eclipse: File  Import  Existing Maven Project  select downloaded repository. 
+3.  Project Directory structure would look like below 
 ![DirectoryStructure.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/DirectoryStructure.png)
 3.	Copy h2 jar to H2 console
+![H2Console.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/H2Console.png)
 4.	Go to http://localhost:8082 and connect to H2 database inserting JDBC URL as jdbc:h2:tcp://localhost:9092/~/mc  click connect
 5.	This should display running h2 instance
+![H2DatabaseRunningInstance.png](https://github.com/poonamphate/Employee-CRUD-Project/blob/master/Images/H2DatabaseRunningInstance.png)
 6.	Go to eclipse  start tomcat server  deploy RESTfulCRUD_Employee app on tomcat server i.e. Right click on RESTfulCRUD_Employee from project explorer  run on server
 7.	In the browser, type this URL  http://localhost:8080/RESTfulCRUD_Employee/index.html
 
